@@ -1,0 +1,73 @@
+/*
+|--------------------------------------------------------------------------
+| #TABLES CORE
+|--------------------------------------------------------------------------
+*/
+
+
+
+
+table {
+    @include rhythm(0);
+    width: 100%;
+    border-collapse: collapse;
+
+    * {
+        margin: 0;
+    }
+
+    &.table-striped {
+        tr {
+            
+            &:nth-of-type(odd) {
+                background: color(grey-30);
+            }
+        }
+
+        thead {
+
+            tr:nth-of-type(odd) {
+                background: transparent;
+            }
+        }
+    }
+}
+
+thead {
+
+    tr:nth-of-type(odd) {
+        background: transparent;
+    }
+}
+
+thead {
+    border-bottom: solid .1rem color(grey-40);
+}
+
+tfoot {
+    border-top: solid 1px color(grey-40);
+}
+
+th {
+    text-align: left;
+    border-bottom: solid 1px color(grey-40);
+}
+
+td {
+    border-bottom: solid 1px color(grey-30);
+}
+
+tr {
+
+    &:last-of-type {
+
+        td {
+            border-bottom: none;
+        }
+    }
+}
+
+td,
+th {
+    padding: $gutter * .5;
+}

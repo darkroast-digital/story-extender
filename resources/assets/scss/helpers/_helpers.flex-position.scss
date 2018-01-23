@@ -1,0 +1,22 @@
+/*
+|--------------------------------------------------------------------------
+| #FLEX POSITIONS
+|--------------------------------------------------------------------------
+*/
+
+
+
+
+@mixin flex-position($position) {
+    
+    @if $position == 'top' {
+        margin-bottom: auto;
+    } @elseif $position == 'right' {
+        margin-left: auto;
+    } @elseif $position == 'bottom' {
+        margin-top: auto;
+    } @else {
+        margin-right: auto;
+    }
+
+}

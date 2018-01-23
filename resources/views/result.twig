@@ -1,0 +1,15 @@
+{% extends 'layout/app.twig' %}
+
+{% block content %}
+    <div class="videoPlayer">
+        <video src="assets/videos/{{ hash }}/video.mp4" poster="assets/videos/{{ hash }}/image.jpg"></video>
+        <div class="videoPlayerControls">
+            <button class="videoPlayerPlay">
+                <svg class="play" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g><path d="M8 5v14l11-7z"></path></g></svg>
+                <svg class="pause" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path></g></svg>
+            </button>
+            <progress class="videoProgress" value="0" min="0" max="0"><span class="videoProgressBar"></span></progress>
+            <a class="videoPlayerDownload button" href="assets/{{ hash }}/video.mp4" download><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"></path></g></svg></a>
+        </div>
+    </div>
+{% endblock %}

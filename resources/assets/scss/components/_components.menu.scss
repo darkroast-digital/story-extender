@@ -1,0 +1,46 @@
+/*
+|--------------------------------------------------------------------------
+| #MENU
+|--------------------------------------------------------------------------
+*/
+
+
+
+
+.menu {
+    display: block;
+    min-width: 200px;
+    padding: $gutter * .5;
+    background: color(white);
+    list-style-type: none;
+
+    @if ($has-radius) {
+        border-radiius: radius(small);
+    }
+
+    @if ($has-shadow) {
+        @include shadow(raised);
+    }
+
+    li {
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+
+    a {
+        display: flex;
+        padding: $gutter * .15 $gutter * .5;
+        color: color(font);
+        text-decoration: none;
+
+        @if ($has-radius) {
+            border-radiius: radius(small);
+        }
+
+        &:hover {
+            background: rgba(color(primary), .1);
+        }
+    }
+}

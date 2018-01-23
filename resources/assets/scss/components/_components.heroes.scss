@@ -1,0 +1,35 @@
+/*
+|--------------------------------------------------------------------------
+| #HEROES
+|--------------------------------------------------------------------------
+*/
+
+
+
+.hero {
+    display: flex;
+    align-items: center;
+    height: 30vh;
+    width: 100%;
+    background: color(primary);
+    position: relative;
+    padding: $gutter;
+
+    &.hero-full {
+        min-height: 100vh;
+    }
+
+    &.hero-centered {
+        justify-content: center;
+        text-align: center;
+    }
+
+    &.hero-right {
+        justify-content: flex-end;
+        text-align: right;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        color: color(white);
+    }
+}

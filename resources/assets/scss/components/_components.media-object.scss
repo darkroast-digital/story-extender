@@ -1,0 +1,43 @@
+/*
+|--------------------------------------------------------------------------
+| #MEDIA OBJECT
+|--------------------------------------------------------------------------
+*/
+
+
+
+
+.mediaObject {
+    display: flex;
+    align-items: flex-start;
+    padding: $gutter * .5;
+    background: color(white);
+
+    @if ($has-radius) {
+        border-radius: radius(small);
+    }
+
+    @if ($has-shadow) {
+        @include shadow(raised);
+    }
+
+    &Image {
+        height: 75px;
+        width: 75px;
+        margin-right: $gutter;
+
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+
+            @if ($has-radius) {
+                border-radius: radius(small);
+            }
+        }
+    }
+
+    &Content {
+        width: calc(100% - (100px + #{$gutter}));
+    }
+}

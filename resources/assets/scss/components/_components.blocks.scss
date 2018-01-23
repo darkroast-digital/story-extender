@@ -1,0 +1,22 @@
+/*
+|--------------------------------------------------------------------------
+| #BLOCKS
+|--------------------------------------------------------------------------
+*/
+
+
+
+.block {
+    position: relative;
+    padding: $gutter;
+    margin-bottom: $global-trail;
+    background: color(white);
+
+    @if ($has-radius) {
+        border-radius: radius(large);
+    }
+
+    @if ($has-shadow) {
+        @include shadow(raised);
+    }
+}

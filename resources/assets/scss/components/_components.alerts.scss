@@ -1,0 +1,70 @@
+/*
+|--------------------------------------------------------------------------
+| #ALERTS CORE
+|--------------------------------------------------------------------------
+*/
+
+
+
+
+$options: 'primary', 'secondary', 'success', 'error', 'warning';
+
+.alert {
+    padding: $gutter * .5;
+    background: color(white);
+    border-left: solid 5px color(black);
+    margin-bottom: $global-trail;
+    position: relative;
+
+    @if ($has-shadow) {
+        @include shadow(raised);
+    }
+
+    * {
+        max-width: 90%;
+        margin-bottom: 0;
+    }
+
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 25px;
+        width: 25px;
+        background: color(black) url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAMNJREFUeNrs3EENgDAMQNEVBUhAAhImBWlIQgIScFAmgSw7LOG9S2/Nln9vKQAAAPxazPy4zNzaOAavPSPilr4vSM3x6sx/XmQXBEEEQRBBEEQQBBEEQRBEEAQRBEEEQRBBEARBBEEQQRBEEAQRBEEQRBAEEQRBBEEQQRAEQQRBEEEQRBAEEQRBEEQQAAAA4JPZb7+vbeyD114R8UjfF8TtdwRBEEEQRBAEEQRBBEEQBBEEQQRBEEEQRBAAAAAASnkFGABIhrbfbIwnQwAAAABJRU5ErkJggg==") center center no-repeat;
+        background-size: 10px;
+        background-position: center center;
+        border-bottom-left-radius: 10px;
+    }
+
+    @if ($has-radius) {
+        overflow: hidden;
+        border-radius: radius(small);
+    }
+
+    strong {
+        color: color(display);
+    }
+    
+    @each $option in $options {
+        &.alert-#{$option} {
+            border-left-color: color(#{$option});
+
+            &:before {
+                background-color: color(#{$option});
+            }
+
+            strong {
+                color: color(#{$option});    
+            }
+        }
+    }
+
+    &.alert-notify {
+        position: fixed;
+        bottom: $gutter * 2;
+        right: $gutter * 2;
+        z-index: z(highest);
+    }
+}

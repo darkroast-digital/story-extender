@@ -1,0 +1,46 @@
+/*
+|--------------------------------------------------------------------------
+| #MODALS
+|--------------------------------------------------------------------------
+*/
+
+
+
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: z(higher);
+    pointer-events: none;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(100px) scale(.98) rotate(-2deg);
+    transform-origin: center;
+    will-change: transform, opacity;
+    transition: all .5s ease(inOutBack);
+
+    .block {
+        max-width: 40%;
+
+        @include breakpoint(md) {
+            max-width: 80%;
+        }
+    }
+
+    &.modal-open {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0) scale(1) rotate(0);
+
+        > * {
+            pointer-events: all;
+        }
+    }
+}
+

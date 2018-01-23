@@ -1,0 +1,38 @@
+/*
+|--------------------------------------------------------------------------
+| #LABELS
+|--------------------------------------------------------------------------
+*/
+
+
+
+
+.badge {
+    position: relative;
+
+    &:before {
+        content: attr(data-badge);
+        position: absolute;
+        z-index: z(middle);
+        top: -.5rem;
+        right: -.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 1.25rem;
+        width: 1.25rem;
+        background: color(primary);
+        color: color(white);
+        font-size: .5rem;
+        box-shadow: 0 0 0 2px color(white);
+        border-radius: radius(circle);
+    }
+}
+
+.badge:not([data-badge])::before,
+.badge[data-badge=""]::before {
+    top: -.25rem;
+    right: -.25rem;
+    height: .5rem;
+    width: .5rem;
+}

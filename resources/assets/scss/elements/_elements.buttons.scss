@@ -1,0 +1,297 @@
+/*
+|--------------------------------------------------------------------------
+| #BUTTONS
+|--------------------------------------------------------------------------
+*/
+
+
+$options: 'default', 'primary', 'secondary', 'success', 'error', 'warning', 'white';
+
+$sizes: 'large', 'small';
+
+button,
+.button {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding: $gutter * .25 $gutter;
+    color: color(white);
+    line-height: $global-line-height;
+    text-decoration: none;
+    background: color(primary);
+    border: solid 1px color(primary);
+    border-radius: radius(small);
+    cursor: pointer;
+    outline: none;
+    transition: all .2s ease(inOutSine);
+    @include shadow(raised);
+
+    &:hover {
+        background: color(primary-light);
+        border-color: color(primary-light);
+    }
+    
+    &:active,
+    &:focus {
+        @include focus(color(primary));
+    }
+
+    @each $size in $sizes {
+
+        @if $size == 'large' {
+            &.is-large {
+                padding: $gutter * .45 $gutter * 1.15;
+                font-size: ms(1);
+            }
+        }
+
+        @if $size == 'small' {
+            &.is-small {
+                font-size: ms(-1);
+            }
+        }
+
+    }
+
+    &.has-icon {
+        padding-left: $gutter * .25;
+        padding-right: $gutter * .25;
+
+        i,
+        svg {
+            height: 1rem;
+            margin-left: $gutter;
+        }
+
+        i {
+
+            svg {
+                margin-left: 0;
+            }
+        }
+
+        svg {
+            vertical-align: middle;
+            fill: currentColor;
+        }
+    }
+
+    &.is-loading {
+        color: transparent !important;
+
+        &:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -.5rem;
+            height: 1rem;
+            width: 1rem;
+            border: .1rem solid color(white);
+            border-right-color: transparent;
+            border-top-color: transparent;
+            border-radius: radius(circle);
+            transform: translate(-50%, -50%);
+            animation: rotate .5s infinite linear;
+        }
+    }
+
+    @each $option in  $options {
+
+        @if $option == 'default' {
+
+            &.is-#{$option} {
+                color: color(font);
+                background: color(grey-20);
+                border: solid 1px color(grey-30);
+
+                &:hover {
+                    background: lighten(color(grey-20), 5%);
+                    border-color: lighten(color(grey-30), 10%);
+                }
+                
+                &:active,
+                &:focus {
+                    background: shade(color(grey-20), 5%);
+                    @include focus(color(grey-30));
+                }
+
+                &.is-loading {
+
+                    &:after {
+                        border-color: color(font);
+                        border-top-color: transparent;
+                        border-right-color: transparent;
+                    }
+                }
+            }
+
+        } @elseif $option == 'white' {
+
+            &.is-#{$option} {
+                color: color(font);
+                background: color(white);
+                border: solid 1px color(white);
+
+                &:hover {
+                    background: shade(color(white), 1%);
+                    border-color: shade(color(white), 1%);
+                }
+                
+                &:active,
+                &:focus {
+                    background: shade(color(grey-20), 5%);
+                    @include focus(color(grey-30));
+                }
+
+                &.is-loading {
+
+                    &:after {
+                        border-color: color(font);
+                        border-top-color: transparent;
+                        border-right-color: transparent;
+                    }
+                }
+            }
+
+        } @elseif $option != 'default'  {
+
+            &.is-#{$option} {
+                background: color(#{$option});
+                border-color: color(#{$option});
+
+                &:hover {
+                    background: color(#{$option}-light);
+                    border-color: color(#{$option}-light);
+                }
+                
+                &:active,
+                &:focus {
+                    background: color(#{$option}-dark);
+                    @include focus(color(#{$option}));
+                }
+            }
+
+        }
+    }
+
+    &.is-outline {
+        color: color(primary);
+        background: transparent;
+
+        &:hover {
+            background: rgba(color(primary), .2);
+        }
+
+        &:focus {
+            background: rgba(color(primary), .4);
+        }
+
+        &.is-loading {
+
+            &:after {
+                border-color: color(primary);
+                border-top-color: transparent;
+                border-right-color: transparent;
+            }
+        }
+
+        @each $option in  $options {
+            @if $option == 'default' {
+
+                &.is-#{$option} {
+                    color: color(font);
+
+                    &:hover {
+                        background: rgba(color(grey-30), .2);
+                    }
+
+                    &:focus {
+                        background: rgba(color(grey-30), .4);
+                    }
+
+                    &.is-loading {
+
+                        &:after {
+                            border-color: color(font);
+                            border-top-color: transparent;
+                            border-right-color: transparent;
+                        }
+                    }
+                }
+
+            } @elseif $option != 'default'  {
+                &.is-#{$option} {
+                    color: color(#{$option});
+
+                    &:hover {
+                        background: rgba(color(#{$option}), .2);
+                    }
+
+                    &:focus {
+                        background: rgba(color(#{$option}), .4);
+                    }
+
+                    &.is-loading {
+
+                        &:after {
+                            border-color: color(#{$option});
+                            border-top-color: transparent;
+                            border-right-color: transparent;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+
+// #DISABLED
+// =========================================================================
+
+button[disabled],
+.button[disabled] {
+    background: color(grey-20);
+    color: color(grey-30);
+    border-color: color(grey-30);
+    cursor: not-allowed;
+}
+
+
+
+
+
+// #BUTTON GROUP
+// =========================================================================
+
+.button-group {
+    display: flex;
+
+    button,
+    .button,
+    input[type="submit"],
+    input[type="button"],
+    input[type="reset"] {
+        border-radius: 0;
+        border-right-width: 0;
+        margin-right: $gutter * .5;
+
+        @if ($has-radius) {
+    
+            &:first-of-type {
+                border-top-left-radius: radius(small);
+                border-bottom-left-radius: radius(small);
+            }
+
+            &:last-of-type {
+                border-top-right-radius: radius(small);
+                border-bottom-right-radius: radius(small);
+                border-right-width: 1px;
+            }
+
+        }
+    }
+}

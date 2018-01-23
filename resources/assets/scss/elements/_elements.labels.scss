@@ -1,0 +1,22 @@
+/*
+|--------------------------------------------------------------------------
+| #LABELS
+|--------------------------------------------------------------------------
+*/
+
+
+$options: 'primary', 'secondary', 'success', 'error', 'warning';
+
+.label {
+    display: inline-block;
+    padding: $gutter * .1 $gutter * .5;
+    color: color(white);
+    background: color(black);
+    border-radius: radius(round);
+
+    @each $option in $options {
+        &.is-#{$option} {
+            background: color(#{$option});
+        }
+    }
+}

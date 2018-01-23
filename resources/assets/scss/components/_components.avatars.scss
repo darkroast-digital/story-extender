@@ -1,0 +1,61 @@
+/*
+|--------------------------------------------------------------------------
+| #AVATARS
+|--------------------------------------------------------------------------
+*/
+
+
+
+
+$options: 'primary', 'secondary', 'success', 'error', 'warning';
+
+.avatar {
+    position: relative;
+    display: inline-flex;
+    height: 3rem;
+    width: 3rem;
+
+    img {
+        height: 100%;
+        width: 100%;
+        border-radius: radius(circle);
+    }
+
+    &Indicator {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        display: block;
+        height: .75rem;
+        width: .75rem;
+        background: color(grey-60);
+        border-radius: radius(circle);
+        box-shadow: 0 0 0 2px color(white);
+
+        @each $option in $options {
+            &-#{$option} {
+                background: color(#{$option});
+            }
+        }
+    }
+
+    &-large {
+        height: 4rem;
+        width: 4rem;
+
+        .avatarIndicator {
+            height: 1rem;
+            width: 1rem;
+        }
+    }
+
+    &-small {
+        height: 2rem;
+        width: 2rem;
+
+        .avatarIndicator {
+            height: .5rem;
+            width: .5rem;
+        }
+    }
+}

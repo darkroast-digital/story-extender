@@ -1,0 +1,361 @@
+/*
+|--------------------------------------------------------------------------
+| #FORMS
+|--------------------------------------------------------------------------
+*/
+
+$options: 'success', 'error', 'warning';
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: $gutter * .15 $gutter * .25;
+    color: color(font);
+    border: 1px solid color(grey-50);
+    
+    @if ($has-radius) {
+        border-radius: radius(small);
+    }
+
+    outline: none;
+
+    &:focus {
+        border-color: color(primary);
+        @include focus($color: color(primary));
+    }
+
+    &::placeholder {
+        color: rgba(color(font), .2);
+    }
+
+    @each $option in $options {
+
+        &.is-#{$option} {
+            color: color(#{$option});
+            border-color: color(#{$option});
+
+            &:focus {
+                @include focus($color: color(#{$option}));
+            }
+
+            &::placeholder {
+                color: rgba(color(#{$option}), .4);
+            }
+
+            +.field-helper {
+                color: rgba(color(#{$option}), .5);
+            }
+        }
+
+    }
+}
+
+textarea {
+    min-height: 150px;
+}
+
+select {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDE4IDE4Ij4KICAgIDxnIGNsYXNzPSJuYy1pY29uLXdyYXBwZXIiIGZpbGw9IiM0NDQ0NDQiPgogICAgICAgIDxwYXRoIGQ9Ik05IDQuMTJsMi4zOCAyLjM4IDEuMDYtMS4wNkw5IDIgNS41NiA1LjQ0IDYuNjIgNi41IDkgNC4xMnptMCA5Ljc2TDYuNjIgMTEuNWwtMS4wNiAxLjA2TDkgMTZsMy40NC0zLjQ0LTEuMDYtMS4wNkw5IDEzLjg4eiI+PC9wYXRoPgogICAgPC9nPgo8L3N2Zz4=');
+    background-repeat: no-repeat;
+    background-position: center right;
+}
+
+.field {
+
+    &-helper {
+        display: block;
+        margin-top: -$global-trail / 2;
+    }
+
+    @each $option in $options {
+
+        &.is-#{$option} {
+
+            label {
+                color: color(#{$option});
+            }
+
+            input {
+                color: color(#{$option});
+                border-color: color(#{$option});
+
+                &::placeholder {
+                    color: rgba(color(#{$option}), .4);
+                }
+
+                &:focus {
+                    @include focus($color: color(#{$option}));
+                }
+            }
+
+            .field-helper {
+                color: rgba(color(#{$option}), .5);
+            }
+        }
+
+    }
+}
+
+.form-row {
+    display: flex;
+
+    .field {
+        margin-right: $gutter * .5;
+
+        &:last-of-type {
+            margin-right: 0;
+        }
+    }
+}
+
+
+
+
+// #RADIO
+// =========================================================================
+
+.radio {
+    cursor: pointer;
+    display: inline-block;
+
+    &-button {
+        position: relative;
+        display: block;
+        height: 1rem;
+        width: 1rem;
+        background: color(white);
+        border: .05rem solid color(grey-30);
+        border-radius: radius(circle);
+        transition: all .2s ease(inOutSine);
+
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: color(primary);
+            border-radius: radius(circle);
+            transition: all .2s ease(inOutSine);
+            transform: scale(0);
+        }
+
+        &:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            height: .25rem;
+            width: .25rem;
+            background: color(white);
+            border-radius: radius(circle);
+            transition: all .2s ease(inOutSine);
+            transform: translate(-50%, -50%) scale(0);
+        }
+    }
+
+    input {
+        display: none;
+
+        &:checked {
+
+            &+.radio-button {
+                border-color: color(primary);
+                @include focus();
+
+                &:before {
+                    transform: scale(1);
+                }
+
+                &:after {
+                    transform: translate(-50%, -50%) scale(1);
+                }
+            }
+        }
+    }
+    
+    @each $option in $options {
+        &.is-#{$option} {
+            input {
+
+                &:checked {
+
+                    &+.radio-button {
+                        border-color: color(#{$option});
+                        @include focus($color: color(#{$option}));
+
+                        &:before {
+                            background: color(#{$option});
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+
+// #CHECKBOX
+// =========================================================================
+
+.checkbox {
+    cursor: pointer;
+    display: inline-block;
+
+    &-button {
+        position: relative;
+        display: block;
+        height: 1rem;
+        width: 1rem;
+        background: color(white);
+        border: .05rem solid color(grey-30);
+        border-radius: 4px;
+        transition: all .2s ease(inOutSine);
+
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: color(primary);
+            transition: all .2s ease(inOutSine);
+            transform: scale(0);
+        }
+
+        &:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            height: 100%;
+            width: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDE4IDE4Ij4KICAgIDxnIGNsYXNzPSJuYy1pY29uLXdyYXBwZXIiIGZpbGw9IiNmZmZmZmYiPgogICAgICAgIDxwYXRoIGQ9Ik02LjYxIDExLjg5TDMuNSA4Ljc4IDIuNDQgOS44NCA2LjYxIDE0bDguOTUtOC45NUwxNC41IDR6Ij48L3BhdGg+CiAgICA8L2c+Cjwvc3ZnPg==');
+            background-position: center center;
+            background-size: 90%;
+            background-repeat: no-repeat;
+            transition: all .1s ease(inOutSine);
+            transform: translate(-50%, -50%) scale(0);
+        }
+    }
+
+    input {
+        display: none;
+
+        &:checked {
+
+            &+.checkbox-button {
+                border-color: color(primary);
+                @include focus();
+
+                &:before {
+                    transform: scale(1);
+                }
+
+                &:after {
+                    transform: translate(-50%, -50%) scale(1);
+                }
+            }
+        }
+    }
+
+    @each $option in $options {
+        &.is-#{$option} {
+            input {
+
+                &:checked {
+
+                    &+.checkbox-button {
+                        border-color: color(#{$option});
+                        @include focus($color: color(#{$option}));
+
+                        &:before {
+                            background: color(#{$option});
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+// #TOGGLE
+// =========================================================================
+
+.toggle {
+    cursor: pointer;
+    display: inline-block;
+
+    &-button {
+        position: relative;
+        display: block;
+        height: 1rem;
+        width: 2rem;
+        background: color(grey-30);
+        border: 2px solid color(grey-30);
+        border-radius: radius(round);
+        pointer-events: none;
+        transition: all .2s ease(inOutSine);
+
+        &:before {
+            content: '';
+            position: absolute;
+            height: 100%;
+            width: 50%;
+            background: color(white);
+            border-radius: radius(round);
+            transition: all .2s ease(inOutSine);
+        }
+    }
+
+    input {
+        display: none;
+        
+        &:checked {
+
+            &+.toggle-button {
+                background: color(primary);
+                border-color: color(primary);
+
+                &:before {
+                    transform: translateX(100%);
+                }
+            }
+        }
+    }
+
+    &:hover {
+
+        .toggle-button {
+
+            &:after {
+                transform: scaleX(1.1);
+            }
+        }
+    }
+
+    @each $option in $options {
+        &.is-#{$option} {
+            input {
+                
+                &:checked {
+
+                    &+.toggle-button {
+                        background: color(#{$option});
+                        border-color: color(#{$option});
+
+                        &:before {
+                            transform: translateX(100%);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

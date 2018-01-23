@@ -1,0 +1,89 @@
+/*
+|--------------------------------------------------------------------------
+| #CORE
+|--------------------------------------------------------------------------
+*/
+
+
+
+
+// #BASE SIZES
+// =========================================================================
+
+$global-font-size: 20px;
+$global-line-height: 1.5;
+
+
+
+
+// #GRID
+// =========================================================================
+
+$columns: 12;
+$gutter: $global-font-size * $global-line-height;
+
+
+
+
+// #SPACING
+// =========================================================================
+
+$global-spacer: $gutter * 3;
+$global-trail: $gutter * 0.5;
+
+
+
+
+// #FONTS
+// =========================================================================
+
+@font-face {
+    font-family: 'Circular';
+    src: url('/assets/fonts/Circular-Black.eot');
+    src: url('/assets/fonts/Circular-Black.eot?#iefix') format('embedded-opentype'),
+        url('/assets/fonts/Circular-Black.woff') format('woff'),
+        url('/assets/fonts/Circular-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Circular';
+    src: url('/assets/fonts/Circular-Book.eot');
+    src: url('/assets/fonts/Circular-Book.eot?#iefix') format('embedded-opentype'),
+        url('/assets/fonts/Circular-Book.woff') format('woff'),
+        url('/assets/fonts/Circular-Book.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+$font-body: 'Circular';
+$font-display: 'Circular';
+$font-mono: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
+
+
+
+
+// #WEIGHTS
+// =========================================================================
+
+$display-weight: 900;
+$body-weight: 400;
+
+
+
+
+// #RHYTHM RATIO
+// =========================================================================
+
+$ms-ratio: 1.125;
+
+
+
+
+// #BREAKPOINTS
+// =========================================================================
+
+$small: 30rem;
+$medium: 48rem;
+$large: 90rem;

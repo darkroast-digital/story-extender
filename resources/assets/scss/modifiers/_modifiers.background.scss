@@ -1,0 +1,13 @@
+/*
+|--------------------------------------------------------------------------
+| #COLORS
+|--------------------------------------------------------------------------
+*/
+
+$options: 'primary', 'secondary', 'success', 'error', 'warning', 'black', 'white';
+
+@each $option in $options {
+    .has-bg-#{$option} {
+        background-color: color(#{$option});
+    }
+}

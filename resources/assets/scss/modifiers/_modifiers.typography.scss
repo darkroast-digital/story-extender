@@ -1,0 +1,63 @@
+/*
+|--------------------------------------------------------------------------
+| #TYPOGRAPHY
+|--------------------------------------------------------------------------
+*/
+
+
+
+
+// #ALIGNMENT
+// =========================================================================
+
+.has-text-left {
+    text-align: left;
+}
+
+.has-text-right {
+    text-align: right;
+}
+
+.has-text-centered {
+    text-align: center;
+}
+
+.has-text-justified {
+    text-align: justify;
+}
+
+
+
+
+// #WEIGHT
+// =========================================================================
+
+.has-text-light {
+    font-weight: light;
+}
+
+.has-text-normal {
+    font-weight: normal;
+}
+
+.has-text-bold {
+    font-weight: bold;
+}
+
+
+
+
+// #TRANSFORMS
+// =========================================================================
+
+.is-capitalized {
+    text-transform: capitalize;
+}
+
+.is-lowercase {
+    text-transform: lowercase;
+}
+
+.is-uppercase {
+    text-transform: uppercase;
+}

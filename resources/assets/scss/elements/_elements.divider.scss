@@ -1,0 +1,36 @@
+/*
+|--------------------------------------------------------------------------
+| #DIVIDER
+|--------------------------------------------------------------------------
+*/
+
+
+
+
+.divider {
+    display: flex;
+    align-items: center;
+    height: 1px;
+    width: 100%;
+    margin: $gutter * .5 0;
+    background: color(grey-30);
+}
+
+.divider[data-text] {
+
+    &:before {
+        content: attr(data-text);
+        display: block;
+        padding: 0 $gutter * .5;
+        color: color(grey-50);
+        background: color(white);
+    }
+}
+
+.badge:not([data-badge])::before,
+.badge[data-badge=""]::before {
+    top: -.25rem;
+    right: -.25rem;
+    height: .5rem;
+    width: .5rem;
+}

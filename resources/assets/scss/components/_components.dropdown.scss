@@ -1,0 +1,30 @@
+/*
+|--------------------------------------------------------------------------
+| #DROPDOWN
+|--------------------------------------------------------------------------
+*/
+
+
+
+
+.dropdownTrigger:focus + .menu,
+.dropdown.is-active .menu {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.dropdown {
+    position: relative;
+
+    .menu {
+        position: absolute;
+        z-index: z(middle);
+        visibility: hidden;
+        top: 100%;
+        left: 0;
+        opacity: 0;
+        transform: translateY(1rem);
+        transition: all .2s ease(inOutSine);
+    }
+}

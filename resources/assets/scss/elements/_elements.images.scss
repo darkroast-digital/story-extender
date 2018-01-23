@@ -1,0 +1,28 @@
+/*
+|--------------------------------------------------------------------------
+| #IMAGES
+|--------------------------------------------------------------------------
+*/
+
+
+
+
+.image-responsive {
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
+
+.image-contain {
+    display: block;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.image-cover {
+    display: block;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}

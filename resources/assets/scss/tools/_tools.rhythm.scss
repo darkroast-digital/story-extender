@@ -1,0 +1,31 @@
+/*
+|--------------------------------------------------------------------------
+| #VERTICAL RHYTHM
+|--------------------------------------------------------------------------
+*/
+
+
+
+
+@if unit($global-trail) == 'px' {
+    $global-trail: calculateRem($global-trail);
+}
+
+
+
+
+// #RHYTHM
+// =========================================================================
+
+@mixin rhythm($size: null) {
+
+    @if $size == 0 {
+        @include fluid(font-size,  .9rem, ms($size));
+    } @else {
+        @include fluid(font-size,  ms($size - 1), ms($size));
+    }
+
+    line-height: $global-line-height;
+    margin-bottom: $global-trail;
+
+}

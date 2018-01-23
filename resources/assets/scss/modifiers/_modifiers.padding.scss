@@ -1,0 +1,27 @@
+/*
+|--------------------------------------------------------------------------
+| #PADDING
+|--------------------------------------------------------------------------
+*/
+
+
+
+.has-padding {
+    padding: $gutter;
+
+    &-top {
+        padding-top: $gutter;
+    }
+
+    &-right {
+        padding-right: $gutter;
+    }
+
+    &-bottom {
+        padding-bottom: $gutter;
+    }
+
+    &-left {
+        padding-left: $gutter;
+    }
+}

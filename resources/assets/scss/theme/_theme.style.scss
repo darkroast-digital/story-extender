@@ -1,0 +1,437 @@
+/*
+|--------------------------------------------------------------------------
+| #THEME
+|--------------------------------------------------------------------------
+*/
+
+
+
+
+// #VIDEO
+// =========================================================================
+
+.videoPlayer {
+    position: relative;
+    background: red;
+    max-height: 768px * .5;
+    max-width: 1280px * .5;
+    border-radius: radius(medium);
+    overflow: hidden;
+
+    &:hover {
+
+        .videoPlayerControls {
+            opacity: 1;
+        }
+    }
+
+    video {
+        width: 100%;
+        vertical-align: middle;
+    }
+
+    button {
+
+        &:active,
+        &:focus {
+            outline: none;
+            box-shadow: none;
+        }
+    }
+
+    &Controls {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        height: $gutter;
+        width: 100%;
+        background: rgba(color(black), .75);
+        opacity: 0;
+        transition: all .2s ease(inSine);
+
+        &:hover {
+           height: $gutter * 1.25;
+           background: rgba(color(black), .8);
+        }
+    }
+
+    &Play,
+    &Download {
+        background: transparent;
+        border: 0;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        padding: .25rem;
+        outline: none;
+
+        svg {
+            height: 100%;
+            fill: color(white);
+        }
+    }
+
+    &Download {
+        @include flex-position(right);
+    }
+
+    .pause {
+        display: none;
+    }
+
+    &.is-playing {
+
+        .play {
+            display: none;
+        }
+
+        .pause {
+            display: block;
+        }
+    }
+}
+
+
+
+
+
+// #HOME
+// =========================================================================
+
+.home {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    overflow: hidden;
+
+    .wave {
+        position: absolute;
+        bottom: -50%;
+        left: 0;
+        z-index: -10;
+        width: 100%;
+        // animation: wave 5s linear infinite alternate-reverse;
+
+        @include breakpoint(md) {
+            bottom: -5%;
+        }
+    }
+
+    .waveTwo {
+        position: absolute;
+        top: -30%;
+        left: 20%;
+        z-index: -10;
+        width: 100%;
+        transform: rotate(180deg);
+        // animation: wave2 3s linear infinite alternate-reverse;
+
+        @include breakpoint(md) {
+            top: -8%;
+        }
+
+        &:hover {
+
+            &:after {
+                content: '';
+                position: absolute;
+            }
+        }
+    }
+
+    h3 {
+        width: 100%;
+        text-align: center;
+
+        @include breakpoint(md) {
+            line-height: 1;
+        }
+    }
+
+    p {
+        max-width: 75%;
+        margin: 0 auto;
+
+        @include breakpoint(md) {
+            max-width: 100%;
+        }
+    }
+}
+
+@keyframes wave {
+    0% {
+        transform: translateY(0) rotate(0);
+    }
+    100% {
+        transform: translateY(20px) translateX(-30px) rotate(1deg);
+    }
+}
+
+@keyframes wave2 {
+    0% {
+        transform: translateY(0) rotate(180deg);
+    }
+    100% {
+        transform: translateY(-20px) translateX(-30px) rotate(181deg);
+    }
+}
+
+.logo {
+    margin-bottom: $gutter * .5;
+
+    @include breakpoint(md) {
+        max-width: 150px;
+    }
+}
+
+
+
+
+
+// #UPLOAD
+// =========================================================================
+
+.upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 300px;
+    margin: 0;
+    padding: $gutter;
+    background: url('/assets/img/uploadBg.svg');
+    background-size: cover;
+    background-position: center center;
+    border-radius: radius(large);
+    cursor: pointer;
+    color: color(font);
+    font-size: ms(0);
+    line-height: 1;
+    text-decoration: none;
+    transition: all .2s ease(inOutSine);
+
+    &:hover {
+        color: rgba(color(primary), .45);
+        border-color: rgba(color(primary), .45);
+
+
+        .uploadIcon {
+
+            &Container {
+                background: rgba(color(primary), .1);
+                border-width: .1rem;
+
+                &.is-animating { 
+                    animation: pulse 2s ease infinite;
+                }
+            }
+        }
+    }
+
+    &Input {
+        text-align: center;
+        margin-top: $gutter * .5;
+
+        span {
+            font-weight: bold;
+            color: color(display);
+            font-size: ms(4);
+        }
+
+        em {
+            font-style: normal;
+        }
+    }
+    
+    &Icon {
+        height: 75px;
+        fill: color(primary);
+        transition: all .2s ease(inOutSine);
+
+        &Container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100px;
+            width: 100px;
+            border: solid .1rem rgba(color(primary), .5);
+            border-radius: radius(round);
+            background: rgba(color(primary), .1);
+            transition: all .2s ease(inOutSine);
+            
+            &.is-animating { 
+                animation: pulse 2s ease infinite;
+            }
+        }
+    }
+
+    input {
+        display: none;
+    }
+
+    &Modal {
+
+        .block {
+            position: relative;
+            min-width: 300px;
+            padding: 0;
+        }
+
+        .circleOne {
+            position: absolute;
+            top: -95px;
+            left: 15px;
+            z-index: -5;
+            height: 75px;
+            width: 75px;
+            background: linear-gradient(color(primary), color(secondary));
+            border-radius: radius(circle);
+            @include shadow(raised);
+            animation: hover 1.5s ease infinite alternate-reverse;
+
+            @include breakpoint(md) {
+                top: -55px;
+                left: 15px;
+                height: 35px;
+                width: 35px;
+            }
+        }
+
+        .circleTwo {
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            z-index: -10;
+            height: 150px;
+            width: 150px;
+            background: linear-gradient(color(primary), color(secondary));
+            border-radius: radius(circle);
+            @include shadow(raised);
+            animation: hover 3s ease infinite alternate-reverse;
+
+            @include breakpoint(md) {
+                top: -50px;
+                left: -25px;
+                height: 75px;
+                width: 75px;
+            }
+        }
+
+        .circleThree {
+            position: absolute;
+            bottom: -100px;
+            right: 50px;
+            z-index: -5;
+            height: 75px;
+            width: 75px;
+            background: linear-gradient(color(primary), color(secondary));
+            border-radius: radius(circle);
+            @include shadow(raised);
+            animation: hover 1.5s ease infinite alternate-reverse;
+
+            @include breakpoint(md) {
+                bottom: -50px;
+                right: 40px;
+                height: 35px;
+                width: 35px;
+            }
+        }
+
+        .circleFour {
+            position: absolute;
+            bottom: -100px;
+            right: -50px;
+            z-index: -10;
+            height: 150px;
+            width: 150px;
+            background: linear-gradient(color(primary), color(secondary));
+            border-radius: radius(circle);
+            @include shadow(raised);
+            animation: hover 3s ease infinite alternate-reverse;
+
+            @include breakpoint(md) {
+                bottom: -30px;
+                right: -10px;
+                height: 75px;
+                width: 75px;
+            }
+        }
+    }
+}
+
+@keyframes hover {
+    0% {
+        transform: translateY(0) translateX(.25rem);
+    }
+    100% {
+        transform: translateY(.25rem) translateX(0);
+    }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(color(primary), 0.4);
+  }
+  70% {
+      box-shadow: 0 0 0 10px rgba(color(primary), 0);
+  }
+  100% {
+      box-shadow: 0 0 0 0 rgba(color(primary), 0);
+  }
+}
+
+
+
+
+// #FOOTER
+// =========================================================================
+
+.footer {
+    padding-top: $gutter * 2;
+    font-size: 1rem;
+
+    a {
+        color: color(font);
+        text-decoration: none;
+        transition: all .1s ease(inOutSine);
+
+        &:hover {
+            color: color(primary);
+            text-decoration: underline;
+        }
+    }
+
+    svg {
+        height: 1rem;
+        margin: 0 $gutter * .15;
+        fill: color(font);
+    }
+}
+
+
+
+
+
+// #NAG
+// =========================================================================
+
+.uploadNag {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: z(highest);
+    width: 200px;
+    text-align: center;
+    white-space: nowrap;
+    @include shadow(large);
+}
